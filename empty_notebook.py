@@ -71,7 +71,7 @@ df = df.drop_duplicates (subset = 'Planet Name', keep = 'last')
 df.columns
 
 # %%
-df2 = df[['Planet Name', 'Distance [pc]','Discovery Year','Stellar Effective Temperature [K]']]
+df2 = df[['Planet Name', 'Distance [pc]','Discovery Year','Stellar Effective Temperature [K]','Equilibrium Temperature [K]','Insolation Flux [Earth Flux]']]
 
 # %%
 df2
@@ -94,5 +94,12 @@ df3
 
 # %%
 df3.plot(kind='scatter', x='Distance [pc]', y='Stellar Effective Temperature [K]', xlim=(0,2500), ylim = (0,12000))
+
+# %%
+df4 = df2[~df2['Equilibrium Temperature [K]'].isna()]
+df4
+
+# %%
+df4.plot(kind='scatter', y='Insolation Flux [Earth Flux]', x='Equilibrium Temperature [K]', xlim = (0,3000), ylim = (0,2000))
 
 # %%
